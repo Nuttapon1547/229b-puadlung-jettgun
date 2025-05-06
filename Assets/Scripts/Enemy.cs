@@ -3,11 +3,11 @@ using UnityEngine;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     [SerializeField] private float speed = 1.5f;
-    private Rigidbody rb;
+    private Rigidbody2D rb2d;
     private GameObject player;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb2d = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -15,10 +15,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         Vector3 d = player.transform.position - transform.position;
         Vector3 dir = d.normalized;
-        rb.AddForce(dir * speed);
+        rb2d.AddForce(dir * speed);
     }
 
-    void OnCollisionEnter(Collision PlayerCollision)
+    void OnCollisionEnter2D(Collision2D PlayerCollision)
     {
         if (PlayerCollision.gameObject.CompareTag("Player"))
         {
@@ -28,7 +28,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             {
                 playerController.TakeDamage(1);
             }
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 

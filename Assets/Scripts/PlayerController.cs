@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb2d; 
     Vector2 moveInput;
+    public float Hp = 5f;
     
     //walk left-right
     private float move; 
@@ -27,6 +28,22 @@ public class movement : MonoBehaviour
         {
             rb2d.AddForce(new Vector2(rb2d.linearVelocity.x, jumpForce));
             Debug.Log("Jump!"); // for debugging
+        }
+    }
+    
+    public void TakeDamage(int damage)
+    {
+        Hp -= damage;
+        //if (heartText != null)
+        {
+            //heartText.text = Hp.ToString();
+        }
+        
+        if (Hp <= 0)
+        {
+            //OnGameOver();
+            Hp = 0;
+            Debug.Log("Game Over");
         }
     }
 }
