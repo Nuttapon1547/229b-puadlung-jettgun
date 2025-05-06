@@ -1,11 +1,15 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb2d; 
     Vector2 moveInput;
-    public float Hp = 5f;
-    
+    private Rigidbody2D rb2d; 
+    private float Hp = 5f;
+    private int starCount;
+
+    public TextMeshProUGUI heartText;
+    public TextMeshProUGUI starText;
     //walk left-right
     private float move; 
     [SerializeField] private float speed;
@@ -34,16 +38,48 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Hp -= damage;
-        //if (heartText != null)
+        if (heartText != null)
         {
-            //heartText.text = Hp.ToString();
+            heartText.text = Hp.ToString();
         }
         
         if (Hp <= 0)
         {
-            //OnGameOver();
+            OnGameOver();
             Hp = 0;
-            Debug.Log("Game Over");
+        }
+    }
+    
+    public void GetStars(int star)
+    {
+        starCount++;
+        if (starText != null)
+        {
+            starText.text = starCount.ToString();
+        }
+
+        if (starCount >= 5)
+        {
+            OnGameWin();
+            Hp = 0;
+        }
+    }
+    
+    public void OnGameWin()
+    {
+        spawnManager spawnManager = FindObjectOfType<spawnManager>();
+        if (spawnManager != null)
+        {
+            spawnManager.GameWin();
+        }
+    }
+    
+    public void OnGameOver()
+    {
+        spawnManager spawnManager = FindObjectOfType<spawnManager>();
+        if (spawnManager != null)
+        {
+            spawnManager.GameOver();
         }
     }
 }
