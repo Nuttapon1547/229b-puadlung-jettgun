@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump"))
         {
             rb2d.AddForce(new Vector2(rb2d.linearVelocity.x, jumpForce));
-            Debug.Log("Jump!"); // for debugging
         }
     }
     
