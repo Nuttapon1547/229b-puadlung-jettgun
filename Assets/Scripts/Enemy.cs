@@ -4,11 +4,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
 {
     [SerializeField] private float speed = 1.5f;
     private Rigidbody2D rb2d;
-    private GameObject player;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject bullet;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        bullet = GameObject.FindGameObjectWithTag("Bullet");
     }
 
     void Update()
@@ -30,6 +32,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+        else if (PlayerCollision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(this.gameObject);
+        }
     }
-
 }

@@ -151,8 +151,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.009802274}
-  m_Radius: 0.19932081
+  m_Offset: {x: 0.005984639, y: -0.009802274}
+  m_Radius: 0.15742844
 --- !u!114 &-584711528108851166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,4 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98996b0c59bbba749a5d76bd2d1084be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.24
+  speed: 0.25
+  player: {fileID: 2565587880920697346, guid: e1a61518b2529d24b9d56276731ca2cb, type: 3}
+  bullet: {fileID: 5060780660362010857, guid: 57dec067f74348e46bec334fa2409a49, type: 3}

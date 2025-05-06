@@ -2,15 +2,39 @@ using UnityEngine;
 
 public class Projectile2D : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private GameObject target;
+    [SerializeField] Rigidbody2D bulletPrefab;
 
-    // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red, 5f);
+            
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+
+            if (hit.collider != null)
+            {
+                target.transform.position = new Vector2(hit.point.x, hit.point.y);
+                
+                Vector2 projectileVelocity = CalculateProjectileelocity(shootPoint.position, hit.point, 1f );
+                
+                Rigidbody2D shootBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+                
+                shootBullet.linearVelocity = projectileVelocity;
+            }
+        }
+    }
+
+    Vector2 CalculateProjectileelocity(Vector2 origin, Vector2 target, float time)
+    {
+        Vector2 distance = target - origin;
+        float elociityx = distance.x / time;
+        float elociityy = distance.y / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
         
+        Vector2 projectileVelocity = new Vector2(elociityx, elociityy);
+        return projectileVelocity;
     }
 }
