@@ -48,9 +48,8 @@ public class spawnManager : MonoBehaviour
         GameOverPanel.SetActive(true);
     }
     
-    public void RestartGame()
+    public void Credit()
     {
-        var s = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(s.name);
+        SceneManager.LoadScene(1);
     }
 }

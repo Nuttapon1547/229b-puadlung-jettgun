@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      icons8-pixel-heart-48_0: 7413026032492643631
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

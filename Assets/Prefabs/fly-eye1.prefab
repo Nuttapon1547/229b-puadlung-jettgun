@@ -165,6 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98996b0c59bbba749a5d76bd2d1084be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
+  speed: 0.75
   player: {fileID: 2565587880920697346, guid: e1a61518b2529d24b9d56276731ca2cb, type: 3}
   bullet: {fileID: 5060780660362010857, guid: 57dec067f74348e46bec334fa2409a49, type: 3}
